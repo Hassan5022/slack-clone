@@ -34,7 +34,7 @@ const SignInCard = ({ setState }: SignInCardProps) => {
 
     e.preventDefault();
     setPending(true);
-    signIn("password", { email, password, flow: "signIn",redirectTo:'/dashbaord' })
+    signIn("password", { email, password, flow: "signIn"})
       .catch((error) => {
         setError("Invalid email or password");
         console.log("error in sign in", error);
