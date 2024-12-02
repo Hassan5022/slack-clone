@@ -1,6 +1,22 @@
-import { queryGeneric } from "convex/server";
+import { mutationGeneric, queryGeneric } from "convex/server";
+import { v } from "convex/values";
+import { getAuthUserId } from "@convex-dev/auth/server";
 // api endpoint
 // ctx = context
+
+export const create = mutationGeneric({
+  args: {
+    name: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const userId = await getAuthUserId(ctx);
+
+    if (!userId) throw new Error("Unauthorized");
+
+    // Todo: Create a proper method later
+    const joinCode = "123456";
+  },
+});
 
 export const get = queryGeneric({
   args: {},
