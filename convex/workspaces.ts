@@ -15,6 +15,14 @@ export const create = mutationGeneric({
 
     // Todo: Create a proper method later
     const joinCode = "123456";
+
+    const workspaceId = await ctx.db.insert("workspaces", {
+      name: args.name,
+      userId,
+      joinCode,
+    });
+
+    return workspaceId;
   },
 });
 

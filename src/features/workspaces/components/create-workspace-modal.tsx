@@ -9,13 +9,37 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { useCreateWorkspace } from "../api/use-create-workspace";
 
 export const CreateWorkspaceModal = () => {
   const [open, setOpen] = useCreateWorkspaceModal();
 
+  const mutate = useCreateWorkspace();
+
   const handleClose = () => {
     setOpen(false);
     // Todo: clear form
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const data = await mutate(
+        {
+          name: "Workspace 1",
+        },
+        {
+          onSuccess() {
+            // Redirect to workspace
+          },
+          onFailure() {
+            // Show toast error
+          },
+          onSettled() {
+            // Reset form
+          },
+        }
+      );
+    } catch (error) {}
   };
 
   return (
