@@ -10,7 +10,7 @@ type Options = {
   onSuccess?: (data: ResponseType) => void;
   onError?: (error: Error) => void;
   onSettled?: () => void;
-  throwError: boolean;
+  throwError?: boolean;
 };
 
 export const useCreateWorkspace = () => {
