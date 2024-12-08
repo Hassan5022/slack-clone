@@ -32,3 +32,16 @@ export const get = queryGeneric({
     return await ctx.db.query("workspaces").collect();
   },
 });
+
+export const getById = queryGeneric({
+  args: { id: v.id("workspaces") },
+  handler: async (ctx, args) => {
+    const userId = await getAuthUserId(ctx);
+
+    if (!userId) {
+      throw new Error("Unautherized");
+    }
+
+    return await ctx.db.get(args.id);
+  },
+});
