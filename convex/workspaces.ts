@@ -22,6 +22,12 @@ export const create = mutationGeneric({
       joinCode,
     });
 
+    await ctx.db.insert("members", {
+      userId,
+      workspaceId,
+      role: "admin",
+    });
+
     return workspaceId;
   },
 });
