@@ -16,7 +16,7 @@ export const current = queryGeneric({
         q.eq("workspaceId", args.workspaceId)
       )
       .filter((q) => q.eq(q.field("userId"), userId))
-      .collect();
+      .unique();
 
     if (!member) return null;
 
